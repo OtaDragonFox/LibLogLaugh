@@ -1,7 +1,9 @@
 #include <logger.h>
 int main()
 {
-	LOG("Test");
+	logger* m_log = new(logger);
+
+
 
 	return 0;
 }

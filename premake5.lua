@@ -1,6 +1,6 @@
 workspace "LiveLoveLog"
     architecture "x64"
-    startproject "LiveLoveLog"
+    startproject "example"
     toolset "v142"
     configurations 
     {
@@ -10,8 +10,8 @@ workspace "LiveLoveLog"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-project "LiveLoveLog"
-    location "LiveLoveLog"
+project "LibLogLaugh"
+    location "LibLogLaugh"
     kind "StaticLib"
     language "c++"
     cppdialect "C++20"
@@ -38,6 +38,7 @@ project "LiveLoveLog"
 
     filter "system:windows"
         systemversion "latest"
+        defines "LOG_WINDWS"
 
 
     filter "configurations:Debug"
@@ -70,12 +71,12 @@ project "example"
 
     includedirs
     {
-        "LiveLoveLog/src"
+        "LibLogLaugh/src"
 
     }
     links
     {
-        "LiveLoveLog"
+        "LibLogLaugh"
     }
 
 
