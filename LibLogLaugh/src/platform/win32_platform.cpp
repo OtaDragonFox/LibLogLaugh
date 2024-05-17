@@ -3,21 +3,27 @@
 #include "log_platform.h"
 #include <Windows.h>
 #include <string>
+
+
+
+
+
 void log_platform::platform_setup() {
 	console_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
 
 
-void log_platform::platform_window_log(const char* message) {
-	SetConsoleTextAttribute(console_handle, 7);
+void log_platform::platform_window_log(int level,const char* message) {
+	SetConsoleTextAttribute(console_handle, levels[level]);
 	OutputDebugStringA(message);
 	long length = strlen(message);
 	LPDWORD number_written = 0;
 	WriteConsoleA(GetStdHandle(STD_OUTPUT_HANDLE), message, (DWORD)length, number_written, 0);
 
-
-
+		// set the conscole attrib to a default value to prevent spillover
+	SetConsoleTextAttribute(console_handle, 7);
+	
 }
 
 void log_platform::platform_debug_out_message(int id){
