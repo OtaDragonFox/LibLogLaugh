@@ -8,18 +8,15 @@ project "LibLogLaugh"
     staticruntime "on"
 
    
-	targetdir ("bin/" .. "/%{prj.name}")
-	objdir ("bin/int/" ..  "/%{prj.name}")
+	targetdir ("bin/" .. outputdir.. "/%{prj.name}")
+	objdir ("bin/int/" .. outputdir ..  "/%{prj.name}")
     files
     {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "include/**.h",
+        "include/**.cpp"
     }
 
-    includedirs
-    {
-        "%{prj.name}/src/"
-    }
+
 
     filter "system:windows"
         systemversion "latest"
